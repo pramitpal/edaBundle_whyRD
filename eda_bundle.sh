@@ -1,32 +1,21 @@
-<<comment
-This is script is tested in WLS of window 11 in ubantu 18.04 release , 
-Please read README in github to exactly know what to do 
-If it break down try to follwo one step at a time , and for failed section refer the original help document(in tool original site/git page)
-for that section 
-comment
-
 #######################################################
 #STEP:1(Important) Download maximum of pre-requiste for all tool
 ########################################################
-
 sudo apt-get update
 mkdir -p whyRD_eda_bundle
 cd whyRD_eda_bundle
 #pre-requisite
 echo "installing pre-requisite"
 echo "___________________________________________________"
-sudo apt-get install build-essential clang bison flex \
+sudo apt-get install build-essential clang bison flex adms libomp-dev \
 	libreadline-dev gawk tcl-dev libffi-dev git \
 	graphviz xdot pkg-config python3 libboost-system-dev \
 	libboost-python-dev libboost-filesystem-dev zlib1g-dev \
 	make m4 tcsh csh libx11-dev gperf  tcl8.6-dev tk8.6 tk8.6-dev \
 	libxmp4 libxpm-dev  libxcb1 libcairo2  \
       libxrender-dev libx11-xcb-dev libxaw7-dev freeglut3-dev automake
-
-
 echo "pre-requisite installed"
 echo "_________________________________________________"
-
 #######################################################
 #STEP:2(OPTIONAL) Install yosys if you wanna wortk on verilog
 ########################################################
@@ -51,8 +40,6 @@ cd ~/whyRD_eda_bundle/
 #make test
 echo "Yosys installed"
 echo "_________________________________________________"
-
-
 #######################################################
 #STEP:3 Installing openPDK and sky130nm
 ########################################################
@@ -67,7 +54,6 @@ git submodule init libraries/sky130_fd_sc_hvl/latest
 git submodule update
 make timing
 cd ..
-
 #install open_pdk , which help in installing sky130 tech file to our eda tool
 git clone git://opencircuitdesign.com/open_pdks
 cd open_pdks
@@ -77,9 +63,6 @@ make
 sudo make install 
 make distclean
 cd ..
-
-
-
 #######################################################
 #STEP:4 Installing magic VLSI
 ########################################################
@@ -94,7 +77,6 @@ cd ..
 #integrate sky130 to magic 
 sudo ln -s /usr/local/share/pdk/sky130A/libs.tech/magic/* /usr/local/lib/magic/sys
 #magic -T sky130A
-
 #######################################################
 #STEP:5 Installing xschem
 ########################################################
@@ -106,7 +88,6 @@ cd xschem
 make 
 sudo make install 
 cd ..
-
 #######################################################
 #STEP:6 Installing xschem
 ########################################################
@@ -123,7 +104,6 @@ git checkout pre-master
 make
 sudo make install
 cd ..
-
 #######################################################
 #STEP:7 Installing netgen
 ########################################################
@@ -133,5 +113,4 @@ cd netgen
 ./configure
 make
 sudo make install
-
 cd ..
