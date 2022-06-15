@@ -2,8 +2,8 @@
 #STEP:1(Important) Download maximum of pre-requiste for all tool
 ########################################################
 sudo apt-get update
-mkdir -p whyRD_eda_bundle
-cd whyRD_eda_bundle
+mkdir -p eda_bundle
+cd eda_bundle
 #pre-requisite
 echo "installing pre-requisite"
 echo "___________________________________________________"
@@ -21,7 +21,7 @@ echo "_________________________________________________"
 #######################################################
 #STEP:2(OPTIONAL) Install yosys if you wanna wortk on verilog
 ########################################################
-cd ~/whyRD_eda_bundle/
+cd ~/eda_bundle/
 echo "Installing yosys"
 echo "_________________________________________________"
 #install yosys it will also download and install ABC 
@@ -38,7 +38,7 @@ sh autoconf.sh
 ./configure
 make 
 sudo make install 
-cd ~/whyRD_eda_bundle/
+cd ~/eda_bundle/
 #make test
 echo "Yosys installed"
 echo "_________________________________________________"
@@ -46,7 +46,7 @@ echo "_________________________________________________"
 #STEP:3 Installing openPDK and sky130nm
 ########################################################
 #install sky130 pdk 
-cd ~/whyRD_eda_bundle/
+cd ~/eda_bundle/
 git clone https://github.com/google/skywater-pdk
 cd skywater-pdk
 git submodule init libraries/sky130_fd_io/latest
@@ -59,7 +59,7 @@ cd ..
 #install open_pdk , which help in installing sky130 tech file to our eda tool
 git clone git://opencircuitdesign.com/open_pdks
 cd open_pdks
-./configure --enable-sky130-pdk=~/whyRD_eda_bundle/skywater-pdk/libraries/ \
+./configure --enable-sky130-pdk=~/eda_bundle/skywater-pdk/libraries/ \
             --with-sky130-link-targets=source --with-ef-style 
 make 
 sudo make install 
@@ -68,7 +68,7 @@ cd ..
 #######################################################
 #STEP:4 Installing magic VLSI
 ########################################################
-cd ~/whyRD_eda_bundle/
+cd ~/eda_bundle/
 #install magic VLSI layout tool 
 git clone git://opencircuitdesign.com/magic
 cd magic 
@@ -82,7 +82,7 @@ sudo ln -s /usr/local/share/pdk/sky130A/libs.tech/magic/* /usr/local/lib/magic/s
 #######################################################
 #STEP:5 Installing xschem
 ########################################################
-cd ~/whyRD_eda_bundle/
+cd ~/eda_bundle/
 #intsll xshem a schemaic capture 
 git clone https://github.com/StefanSchippers/xschem.git xschem
 cd xschem
@@ -94,7 +94,7 @@ cd ..
 #STEP:6 Installing xschem
 ########################################################
 #install ngspice 
-cd ~/whyRD_eda_bundle/
+cd ~/eda_bundle/
 sudo apt-get install -y libtool
 git clone https://git.code.sf.net/p/ngspice/ngspice ngspice_test
 cd ngspice_test
@@ -109,7 +109,7 @@ cd ..
 #######################################################
 #STEP:7 Installing netgen
 ########################################################
-cd ~/whyRD_eda_bundle/
+cd ~/eda_bundle/
 git clone git://opencircuitdesign.com/netgen
 cd netgen 
 ./configure
